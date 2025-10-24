@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="tr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Hafız AI - Kur'an Ezber Koçu</title>
+    <link rel="stylesheet" href="/assets/styles.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Scheherazade+New:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <header class="hero">
+      <div class="container">
+        <h1>Hafız AI</h1>
+        <p>
+          Kur'an okuma pratiğini gerçek zamanlı takip eden yapay zekâ destekli
+          koç. Mikrofonunu aç, seçtiğin pasajı oku ve anında geri bildirim al.
+        </p>
+        <div class="actions">
+          <button id="start-button" class="primary">Kaydı Başlat</button>
+          <button id="stop-button" class="secondary" disabled>Kaydı Durdur</button>
+        </div>
+      </div>
+    </header>
+
+    <main class="container">
+      <section class="panel" id="passage-panel">
+        <div class="panel-header">
+          <h2>Çalışma Metni</h2>
+          <select id="passage-select"></select>
+        </div>
+        <article id="passage-content"></article>
+      </section>
+
+      <section class="grid">
+        <div class="panel" id="live-transcript">
+          <div class="panel-header">
+            <h2>Canlı Transkript</h2>
+            <span id="speech-status" class="status offline">Mikrofon Kapalı</span>
+          </div>
+          <div class="transcript" id="transcript-text"></div>
+          <textarea
+            id="manual-input"
+            placeholder="Tarayıcınız ses tanımayı desteklemiyorsa, okuduğunuz metni buraya yazabilirsiniz."
+          ></textarea>
+          <button id="manual-submit" class="secondary">Metni Değerlendir</button>
+        </div>
+
+        <div class="panel" id="feedback-panel">
+          <div class="panel-header">
+            <h2>Geri Bildirim</h2>
+            <span id="accuracy"></span>
+          </div>
+          <div class="feedback" id="feedback-suggestions"></div>
+          <div class="chips">
+            <div>
+              <h3>Eksik Kelimeler</h3>
+              <ul id="missing-words" class="chip-list"></ul>
+            </div>
+            <div>
+              <h3>Fazla Kelimeler</h3>
+              <ul id="extra-words" class="chip-list"></ul>
+            </div>
+            <div>
+              <h3>Telaffuz Çalışması</h3>
+              <ul id="mispronounced-words" class="chip-list"></ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="panel" id="how-it-works">
+        <h2>Nasıl Çalışır?</h2>
+        <ol>
+          <li>Çalışmak istediğin sure veya pasajı listeden seç.</li>
+          <li>
+            <strong>Kaydı Başlat</strong> butonuna tıkla, tarayıcın mikrofon
+            izni isteyecektir.
+          </li>
+          <li>
+            Okumaya başladığında Web Speech API konuşmanı metne çevirir, Hafız
+            AI ise referans metinle anlık olarak karşılaştırır.
+          </li>
+          <li>
+            Okumayı bitirdiğinde <strong>Kaydı Durdur</strong> butonu ile
+            değerlendirmeyi tamamla ve önerileri incele.
+          </li>
+        </ol>
+        <p class="hint">
+          Not: Web Speech API tarayıcı tarafından sağlanır ve arabic (ar-SA)
+          dil desteği gerekir. Desteklenmiyorsa manuel metin girişini
+          kullanabilirsin.
+        </p>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="container">
+        <p>
+          Demo amaçlı hazırlanmıştır. Daha gelişmiş telaffuz analizi için profesyonel
+          ses modelleri entegre edilmelidir.
+        </p>
+      </div>
+    </footer>
+
+    <script src="/assets/app.js" type="module"></script>
+  </body>
+</html>
